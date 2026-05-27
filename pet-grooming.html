@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawsome Grooming - Professional Pet Care</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FFB347;
+            --secondary: #FF9FF3;
+            --accent: #FFA07A;
+            --light-bg: #FFF8E7;
+            --warm-cream: #FFFACD;
+            --text-dark: #5D4E37;
+            --shadow-light: rgba(255, 107, 107, 0.1);
+            --shadow-medium: rgba(255, 107, 107, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff9f0;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px var(--shadow-medium);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FFE5B4 0%, #FFDAB9 50%, #FFB6C1 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: slideInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--secondary) 0%, #FF69B4 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .hero-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .pet-bubble {
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pet-bubble:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .pet-bubble:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 1s;
+            animation-duration: 7s;
+        }
+
+        .pet-bubble:nth-child(3) {
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 2s;
+            animation-duration: 8s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(10deg);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #8B7355;
+        }
+
+        /* Claymorphism Cards */
+        .clay-card {
+            background: linear-gradient(135deg, #FFFACD 0%, #FFE4B5 100%);
+            border-radius: 40px;
+            padding: 2rem;
+            box-shadow: 
+                8px 8px 20px rgba(0, 0, 0, 0.08),
+                -8px -8px 20px rgba(255, 255, 255, 0.8),
+                inset -2px -2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .clay-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                12px 12px 30px rgba(0, 0, 0, 0.12),
+                -8px -8px 20px rgba(255, 255, 255, 0.8),
+                inset -2px -2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Services Section */
+        .services {
+            background: #fff9f0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 450px;
+        }
+
+        .service-card.featured {
+            background: linear-gradient(135deg, #FF9FF3 0%, #FFB6C1 100%);
+            transform: scale(1.05);
+        }
+
+        .service-card .badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FF6B6B;
+            margin: 1rem 0;
+        }
+
+        .features {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+            flex-grow: 1;
+            color: var(--text-dark);
+        }
+
+        .features li {
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .service-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 10px var(--shadow-light);
+        }
+
+        .service-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px var(--shadow-medium);
+        }
+
+        .service-btn-primary {
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+        }
+
+        .add-ons {
+            background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 100%);
+            padding: 2rem;
+            border-radius: 30px;
+            margin-top: 2rem;
+        }
+
+        .add-ons h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-size: 1.5rem;
+        }
+
+        .add-ons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .add-on-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .add-on-item:hover {
+            transform: translateX(5px);
+        }
+
+        .price-small {
+            font-weight: bold;
+            color: #FF1493;
+            font-size: 1.1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: linear-gradient(135deg, #FFF8DC 0%, #FFFACD 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            text-align: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .pet-image {
+            font-size: 5rem;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .gallery-item:hover .pet-image {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .pet-info h4 {
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pet-info p {
+            color: #8B7355;
+            font-style: italic;
+        }
+
+        /* Booking Section */
+        .booking {
+            background: white;
+        }
+
+        .booking-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.8rem 1rem;
+            border: 2px solid #FFE4B5;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: #FFFACD;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--shadow-light);
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--secondary) 0%, #FF69B4 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-message.success {
+            display: block;
+            background: #D4EDDA;
+            color: #155724;
+            border: 2px solid #28A745;
+        }
+
+        .form-message.error {
+            display: block;
+            background: #F8D7DA;
+            color: #721C24;
+            border: 2px solid #F5C6CB;
+        }
+
+        .booking-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .booking-info h3 {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .info-item h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .info-item p {
+            color: #8B7355;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #FFE5B4 0%, #FFDAB9 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2.5rem;
+        }
+
+        .stars {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .author-avatar {
+            font-size: 2.5rem;
+        }
+
+        .testimonial-author h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-author p {
+            color: #8B7355;
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--text-dark) 0%, #8B7355 100%);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card.featured {
+                transform: scale(1);
+            }
+
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                min-height: auto;
+            }
+
+            .pet-bubble {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .add-ons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🐾</span>
+                <span>Pawsome Grooming</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Pawsome Grooming</h1>
+            <p>Where your furry friends get the royal treatment! 👑</p>
+            <a href="#booking" class="cta-button">Book Your Appointment</a>
+        </div>
+        <div class="hero-animation">
+            <div class="pet-bubble">🐕</div>
+            <div class="pet-bubble">🐈</div>
+            <div class="pet-bubble">🐾</div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Professional grooming packages tailored for your pet</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Basic Spa -->
+            <div class="service-card clay-card">
+                <div class="card-icon">🛁</div>
+                <h3>Basic Spa</h3>
+                <p class="price">$35</p>
+                <ul class="features">
+                    <li>✓ Full bath & dry</li>
+                    <li>✓ Nail trimming</li>
+                    <li>✓ Ear cleaning</li>
+                </ul>
+                <button class="service-btn">Select Package</button>
+            </div>
+
+            <!-- Premium Grooming -->
+            <div class="service-card clay-card featured">
+                <div class="badge">Popular</div>
+                <div class="card-icon">✨</div>
+                <h3>Premium Grooming</h3>
+                <p class="price">$65</p>
+                <ul class="features">
+                    <li>✓ Full groom & styling</li>
+                    <li>✓ Nail & paw care</li>
+                    <li>✓ Ear cleaning</li>
+                    <li>✓ De-shedding treatment</li>
+                    <li>✓ Fresh scent spray</li>
+                </ul>
+                <button class="service-btn service-btn-primary">Select Package</button>
+            </div>
+
+            <!-- Luxury Pamper -->
+            <div class="service-card clay-card">
+                <div class="card-icon">👑</div>
+                <h3>Luxury Pamper</h3>
+                <p class="price">$95</p>
+                <ul class="features">
+                    <li>✓ Everything in Premium</li>
+                    <li>✓ Pawdicure with polish</li>
+                    <li>✓ Massage & spa therapy</li>
+                    <li>✓ Aromatherapy session</li>
+                    <li>✓ Photo session included</li>
+                </ul>
+                <button class="service-btn">Select Package</button>
+            </div>
+        </div>
+
+        <!-- Add-ons -->
+        <div class="add-ons">
+            <h3>Add-On Services</h3>
+            <div class="add-ons-grid">
+                <div class="add-on-item">
+                    <span>🎨 Coat Coloring</span>
+                    <span class="price-small">+$20</span>
+                </div>
+                <div class="add-on-item">
+                    <span>💅 Pawdicure</span>
+                    <span class="price-small">+$15</span>
+                </div>
+                <div class="add-on-item">
+                    <span>💐 Perfume Bath</span>
+                    <span class="price-small">+$10</span>
+                </div>
+                <div class="add-on-item">
+                    <span>🧘 Relaxation Massage</span>
+                    <span class="price-small">+$25</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="section-header">
+            <h2>Pet Gallery</h2>
+            <p>Adorable transformations from our happy clients</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item clay-card">
+                <div class="pet-image">🐕</div>
+                <div class="pet-info">
+                    <h4>Max</h4>
+                    <p>Golden Retriever</p>
+                </div>
+            </div>
+
+            <div class="gallery-item clay-card">
+                <div class="pet-image">🐈</div>
+                <div class="pet-info">
+                    <h4>Luna</h4>
+                    <p>Persian Cat</p>
+                </div>
+            </div>
+
+            <div class="gallery-item clay-card">
+                <div class="pet-image">🐩</div>
+                <div class="pet-info">
+                    <h4>Bella</h4>
+                    <p>Poodle</p>
+                </div>
+            </div>
+
+            <div class="gallery-item clay-card">
+                <div class="pet-image">🐕‍🦺</div>
+                <div class="pet-info">
+                    <h4>Rocky</h4>
+                    <p>German Shepherd</p>
+                </div>
+            </div>
+
+            <div class="gallery-item clay-card">
+                <div class="pet-image">😸</div>
+                <div class="pet-info">
+                    <h4>Whiskers</h4>
+                    <p>Tabby Cat</p>
+                </div>
+            </div>
+
+            <div class="gallery-item clay-card">
+                <div class="pet-image">🐶</div>
+                <div class="pet-info">
+                    <h4>Daisy</h4>
+                    <p>Maltese</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="section-header">
+            <h2>Book Your Appointment</h2>
+            <p>Schedule your pet's grooming session today!</p>
+        </div>
+
+        <div class="booking-container">
+            <form class="booking-form clay-card" id="bookingForm">
+                <div class="form-group">
+                    <label for="pet-name">Pet Name *</label>
+                    <input type="text" id="pet-name" required placeholder="Enter your pet's name">
+                </div>
+
+                <div class="form-group">
+                    <label for="pet-type">Pet Type *</label>
+                    <select id="pet-type" required>
+                        <option value="">Select pet type</option>
+                        <option value="dog">🐕 Dog</option>
+                        <option value="cat">🐈 Cat</option>
+                        <option value="rabbit">🐰 Rabbit</option>
+                        <option value="hamster">🐹 Hamster</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Service Package *</label>
+                    <select id="service" required>
+                        <option value="">Select a service</option>
+                        <option value="basic">Basic Spa - $35</option>
+                        <option value="premium">Premium Grooming - $65</option>
+                        <option value="luxury">Luxury Pamper - $95</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Preferred Date *</label>
+                        <input type="date" id="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time">Preferred Time *</label>
+                        <select id="time" required>
+                            <option value="">Select time</option>
+                            <option value="09:00">09:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="14:00">02:00 PM</option>
+                            <option value="15:00">03:00 PM</option>
+                            <option value="16:00">04:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="owner-name">Your Name *</label>
+                    <input type="text" id="owner-name" required placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" required placeholder="+1 (555) 000-0000">
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Special Notes</label>
+                    <textarea id="notes" placeholder="Any special requests or concerns for your pet?"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Confirm Booking</button>
+
+                <div class="form-message" id="form-message"></div>
+            </form>
+
+            <div class="booking-info clay-card">
+                <h3>Why Choose Pawsome?</h3>
+                <div class="info-item">
+                    <span class="info-icon">⏰</span>
+                    <div>
+                        <h4>Quick Service</h4>
+                        <p>Average grooming time: 1-2 hours</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🏥</span>
+                    <div>
+                        <h4>Safety First</h4>
+                        <p>All equipment sanitized between visits</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">👨‍⚕️</span>
+                    <div>
+                        <h4>Expert Team</h4>
+                        <p>Certified professional groomers</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">❤️</span>
+                    <div>
+                        <h4>Pet Loving</h4>
+                        <p>Gentle care with lots of treats & love</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="section-header">
+            <h2>What Pet Parents Say</h2>
+            <p>Real reviews from our happy clients</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card clay-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Max absolutely loves going to Pawsome! His coat has never looked better. The team is so friendly and gentle with him!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👨‍👩‍👦</div>
+                    <div>
+                        <h4>Sarah Johnson</h4>
+                        <p>Golden Retriever Owner</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card clay-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Luna was terrified of grooming before, but the staff at Pawsome made her feel so comfortable. Now she's excited for her appointments!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👩‍💼</div>
+                    <div>
+                        <h4>Emily Chen</h4>
+                        <p>Cat Parent</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card clay-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Best grooming service in town! Professional, affordable, and they actually care about each pet. Highly recommended!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👨‍🦱</div>
+                    <div>
+                        <h4>Michael Brown</h4>
+                        <p>Poodle Owner</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card clay-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Bella's grooming is always perfect! The team remembers her preferences and treats her like family. Worth every penny!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👩‍🦰</div>
+                    <div>
+                        <h4>Jessica Martinez</h4>
+                        <p>Multi-Pet Owner</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card clay-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Extremely satisfied with the service. Rocky looks and feels amazing after each visit. Thank you, Pawsome team!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">🧔</div>
+                    <div>
+                        <h4>David Lee</h4>
+                        <p>German Shepherd Owner</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card clay-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"From booking to completion, the experience is seamless. The luxury package is totally worth it. My pup is spoiled!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👴</div>
+                    <div>
+                        <h4>Robert Wilson</h4>
+                        <p>Senior Pet Caretaker</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🐾 Pawsome Grooming</h4>
+                <p>Your pet's favorite grooming destination</p>
+            </div>
+            <div class="footer-section">
+                <h4>Hours</h4>
+                <p>Mon-Fri: 9:00 AM - 6:00 PM</p>
+                <p>Sat-Sun: 10:00 AM - 4:00 PM</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>📞 (555) 123-PAWS</p>
+                <p>📧 hello@pawsomegrooming.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Pawsome Grooming. All rights reserved. 🐾</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form handling
+        const bookingForm = document.getElementById('bookingForm');
+        const formMessage = document.getElementById('form-message');
+
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const petName = document.getElementById('pet-name').value;
+            const petType = document.getElementById('pet-type').value;
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const ownerName = document.getElementById('owner-name').value;
+            const phone = document.getElementById('phone').value;
+
+            // Validation
+            if (!petName || !petType || !service || !date || !time || !ownerName || !phone) {
+                showMessage('Please fill in all required fields!', 'error');
+                return;
+            }
+
+            // Simple phone validation
+            if (!/^[\d\s\-\(\)\+]+$/.test(phone)) {
+                showMessage('Please enter a valid phone number!', 'error');
+                return;
+            }
+
+            // Success message
+            showMessage(`Thank you, ${ownerName}! Your booking for ${petName} is confirmed for ${date} at ${time}. We'll see your adorable ${petType} soon! 🐾`, 'success');
+
+            // Reset form
+            bookingForm.reset();
+
+            // Optional: Log booking data
+            console.log({
+                petName,
+                petType,
+                service,
+                date,
+                time,
+                ownerName,
+                phone,
+                timestamp: new Date()
+            });
+        });
+
+        function showMessage(message, type) {
+            formMessage.textContent = message;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = 'block';
+
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Set minimum date to today
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
